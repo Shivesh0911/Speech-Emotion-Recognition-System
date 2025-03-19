@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SERS - Speech Emotion Recognition System</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="centered-text" >
+            <h1 style="color:white;">SERS - Speech Emotion Recognition System</h1>
+            <form id="upload-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="audio_file" accept="audio/*">
+                <button type="submit">Upload Audio</button>
+            </form>
+            <div id="prediction-result"></div>
+        </div>
+    </div>
+<img src="{% static 'D:\DjangoSER\SERS\static\images\Logo.jpg' %}" alt="My image">
+    
+    <script>
+        // Add event listener for form submission
+        document.getElementById("upload-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Create FormData object to send the file
+            var formData = new FormData(this);
+
+            // Send a POST request to the server with the audio file
+            fetch("", {
+                method: "POST",
+                body: formData
+            })
+            
+            .then(response => response.json())
+            .then(data => {
+                // Display the predicted emotion
+                document.getElementById("prediction-result").innerText ="Predicted Emotion: "  + data.predicted_emotion;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>

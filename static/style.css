@@ -1,0 +1,25 @@
+/* style.css */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative; /* Set the container as relative positioning */
+}
+
+.centered-text {
+    position: absolute; /* Set the text as absolute positioning */
+    top: 500%; /* Position the text vertically at 50% from the top */
+    left: 50%;
+    bottom: 50%; /* Position the text horizontally at 50% from the left */
+    transform: translate(-50%, -50%); /* Center the text perfectly */
+    text-align: center; /* Center the text horizontally */
+    z-index: 1; /* Ensure text appears above the image */
+}
+
+img {
+    display: block; /* Ensure the image is a block element */
+    width: 100%; /* Make the image responsive */
+}
